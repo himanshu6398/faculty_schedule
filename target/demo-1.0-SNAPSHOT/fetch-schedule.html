@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--    <link rel="stylesheet" href="style.css" />-->
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+    <script type="text/javascript">
+        // import jsPDF from 'jspdf'
+        // import 'jspdf-autotable'
+        function genPDF() {
+            let doc = new jsPDF('p', 'pt');
+            doc.autoTable({html: '#schedule'});
+            doc.save('table.pdf');
+        }
+    </script>
+</head>
+<body>
+<main class="container" role="main">
+    <div class="jumbotron">
+        <h1>Schedule</h1>
+        <p class="lead"></p>
+        <!--        <a class="btn btn-lg btn-primary" role="button" onclick="fetch_courses()">Fetch Data &raquo;</a>-->
+    </div>
+    <div id="pdf">
+    <table class="table" id="schedule">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Day</th>
+            <th scope ="col">Time</th>
+            <th scope ="col">Room No.</th>
+        </tr>
+        </thead>
+        <tbody id="table_fill_data">
+        </tbody>
+    </table>
+    </div>
+</main>
+<a href="javascript:genPDF()"><center>Download schedule</center></a>
+</body>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/fetch-schedule.js"></script>
+</html>
